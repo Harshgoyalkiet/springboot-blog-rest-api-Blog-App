@@ -2,6 +2,7 @@ package com.springboot.blog.Controller;
 
 import com.springboot.blog.Payload.PostDto;
 import com.springboot.blog.Service.PostService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,17 +36,18 @@ public class PostController {
 
     //create a post
     @PostMapping("/")
-    public ResponseEntity<PostDto> createPost(@RequestBody PostDto postDto) {
+    public ResponseEntity<PostDto> createPost(@Valid @RequestBody PostDto postDto) {
         return new ResponseEntity<>(postService.createPost(postDto), HttpStatus.CREATED);
     }
 
     //update existing post with id
     @PutMapping("/update")
-    public ResponseEntity<PostDto> updatePost(@RequestBody PostDto postDto) {
+    public ResponseEntity<PostDto> updatePost(@Valid @RequestBody PostDto postDto) {
         return ResponseEntity.ok(postService.updatePost(postDto));
     }
 
     // delete post by Id
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deletePost(@RequestParam Long id) {
         return ResponseEntity.ok(postService.deletePost(id));
     }
