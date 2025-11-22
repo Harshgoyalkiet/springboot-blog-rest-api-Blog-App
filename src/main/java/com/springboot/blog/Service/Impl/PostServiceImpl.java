@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -73,7 +72,7 @@ public class PostServiceImpl implements PostService {
     public PostDto convertToDto(Post post) {
 
 //        PostDto postResponseDto = new PostDto();
-        PostDto postDto= modelMapper.map(post, PostDto.class);
+        PostDto postDto = modelMapper.map(post, PostDto.class);
 //        postResponseDto.setTitle(post.getTitle());
 //        postResponseDto.setDescription(post.getDescription());
 //        postResponseDto.setContent(post.getContent());
