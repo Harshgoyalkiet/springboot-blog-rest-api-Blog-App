@@ -48,7 +48,7 @@ public class PostController {
 
     // delete post by Id
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletePost(@RequestParam Long id) {
+    public ResponseEntity<String> deletePost(@PathVariable Long id) {
         return ResponseEntity.ok(postService.deletePost(id));
     }
     // get pagination and sorting posts
