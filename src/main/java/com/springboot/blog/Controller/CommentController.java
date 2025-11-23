@@ -2,7 +2,6 @@ package com.springboot.blog.Controller;
 
 import com.springboot.blog.Payload.CommentDto;
 import com.springboot.blog.Service.CommentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,13 @@
 spring:
+  security:
+    user:
+      name:
+        harsh
+      password:
+        harsh@123
+      roles:
+        ADMIN
+
   application:
     name: springboot-blog-rest-api
   datasource:
@@ -11,6 +20,8 @@ spring:
         dialect: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
+
+
 
 
 
