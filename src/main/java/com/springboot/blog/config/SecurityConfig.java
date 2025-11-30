@@ -7,11 +7,18 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password4j.BcryptPassword4jPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
+
+    @Bean
+    public static PasswordEncoder passwordEncoder() {
+        return new BcryptPassword4jPasswordEncoder();
+    }
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -26,9 +33,13 @@ public class SecurityConfig {
     // creating In memory user based authentication with roles.
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails ramesh = User.builder().username("ramesh").password("ramesh").roles("USER").build();
-        UserDetails admin = User.builder().username("ADMIN").password("ADMIN").roles("ADMIN").build();
-        return new InMemoryUserDetailsManager(ramesh,admin);
+        UserDetails ramesh = User.builder().username("ramesh")
+                .password(passwordEncoder().encode("ramesh"))
+                .roles("USER").build();
+        UserDetails admin = User.builder().username("ADMIN")
+                .password(passwordEncoder().encode("ADMIN"))
+                .roles("ADMIN").build();
+        return new InMemoryUserDetailsManager(ramesh, admin);
     }
 
 

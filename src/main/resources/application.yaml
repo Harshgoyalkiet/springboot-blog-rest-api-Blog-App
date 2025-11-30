@@ -1,12 +1,12 @@
-spring:
-  security:
-    user:
-      name:
-        harsh
-      password:
-        harsh@123
-      roles:
-        ADMIN
+#spring:
+# security:
+#    user:
+#      name:
+#        harsh
+#      password:
+#        harsh@123
+#      roles:
+#        ADMIN 
 
   application:
     name: springboot-blog-rest-api
