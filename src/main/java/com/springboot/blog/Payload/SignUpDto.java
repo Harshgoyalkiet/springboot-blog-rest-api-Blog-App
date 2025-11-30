@@ -5,9 +5,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-public class CommentDto {
-    private Long Id;
+@AllArgsConstructor
+@NoArgsConstructor
+public class SignUpDto {
     private String name;
+    private String username;
     private String email;
-    private String body;
+    private String password;
+
 }

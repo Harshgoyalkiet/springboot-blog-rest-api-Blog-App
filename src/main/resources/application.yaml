@@ -1,3 +1,4 @@
+# spring security configuration for basic authentication
 #spring:
 # security:
 #    user:
@@ -6,8 +7,8 @@
 #      password:
 #        harsh@123
 #      roles:
-#        ADMIN 
-
+#        ADMIN
+spring:
   application:
     name: springboot-blog-rest-api
   datasource:
