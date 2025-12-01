@@ -3,6 +3,7 @@ package com.springboot.blog.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,7 +25,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws AccessDeniedException {
         http.csrf(csrf -> csrf.disable())
 //                .authorizeHttpRequests((authorize) -> authorize.anyRequest().authenticated())
                 .authorizeHttpRequests((authorize)->
