@@ -34,7 +34,6 @@ public class SecurityConfig {
 
         return http.build();
     }
-    // In basic Authentication we need to pass the username and password in headers of the requests.
     // creating In memory user based authentication with roles.
     @Bean
     public UserDetailsService userDetailsService() {
