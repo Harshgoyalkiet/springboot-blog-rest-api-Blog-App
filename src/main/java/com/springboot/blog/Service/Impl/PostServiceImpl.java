@@ -7,6 +7,10 @@ import com.springboot.blog.Repository.PostRepository;
 import com.springboot.blog.Service.PostService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -33,15 +37,18 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostDto> getAllPosts() {
-        List<Post> posts = postRepository.findAll();
-        List<PostDto> postResponse = new ArrayList<>();
-        if (!posts.isEmpty()) {
-            postResponse = convertToDtoLists(posts);
+    public List<PostDto> getAllPosts(int pageNo, int pageSize) {
 
+//        creating pagination support and pageable instance
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        Page<Post> posts = postRepository.findAll(pageable);
+        //get content for page Object
+        List<Post> listOfPost = posts.getContent();
+        List<PostDto> postResponse = new ArrayList<>();
+        if (!listOfPost.isEmpty()) {
+            postResponse = convertToDtoLists(listOfPost);
         }
         return postResponse;
-
     }
 
     @Override
