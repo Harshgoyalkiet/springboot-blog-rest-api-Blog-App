@@ -22,6 +22,11 @@ spring:
     hibernate:
       ddl-auto: update
 
+app:
+  jwt-secret: 4ee0a36cf465ca2e0c6d67d8b4d6fb0f8afd8503f5bf94d28b84ebdcf69dca06
+  jwt-expiration-milliseconds: 604800000
+
+
 
 
 
